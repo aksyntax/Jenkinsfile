@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    triggers {
+        // Poll the source code repository every minute
+        pollSCM('* * * * *')   // Every minute
+
+        // Scheduled cron trigger (also every minute)
+        cron('* * * * *')      // Every minute
+    }
+
+    stages {
+        stage('Start') {
+            steps {
+                echo "Pipeline triggered at ${new Date()}"
+            }
+        }
+
+        stage('Checkout') {
+            steps {
+                // Make sure your pipeline is connected to a real repo for this to work
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+    }
+}
