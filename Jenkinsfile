@@ -9,7 +9,7 @@ pipeline {
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
-                    keepAll: True,
+                    keepAll: true,
                     reportDir: '.',
                     reportFiles: 'index.html',
                     reportName:'Build Report'
