@@ -3,7 +3,7 @@ pipeline {
 
     triggers {
         // Poll the source code repository every minute
-        pollSCM('* * * * *')   // Every minute
+        pollSCM('* * * * *')   
 
         // Scheduled cron trigger (also every minute)
         cron('* * * * *')      // Every minute
