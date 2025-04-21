@@ -12,7 +12,7 @@ pipeline{
                 publicHTML(target:[
                     reportName: 'HTML Page',
                     reportDir: '.',
-                    reportFiles; 'index.html',
+                    reportFiles: 'index.html',
                     keepAll: true,
                     alwaysLinkToLastBuild: true,
                     allowMissing: false
