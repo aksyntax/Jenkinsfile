@@ -1,19 +1,22 @@
-pipeline {
-    agent any
-
+pipeline{
+    agent any 
 
     stages {
-        stage('Deploy') {
+        stage('Git Clone Repository') {
+            steps{
+                git branch: "main", url:'https://github.com/aksyntax/Jenkinsfile.git'
+            }
+        }
+        stage('Publish HTML'){
             steps {
-                echo 'Publishing HTML'
-                publishHTML(target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
+                publicHTML(target:[
+                    reportName: 'HTML Page',
                     reportDir: '.',
-                    reportFiles: 'index.html',
-                    reportName:'Build Report'
-                    ])
+                    reportFiles; 'index.html',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true,
+                    allowMissing: false
+                ])
             }
         }
     }
